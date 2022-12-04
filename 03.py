@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import os
-import string
 
 def prio(ch):
     if ord(ch) > 96:
