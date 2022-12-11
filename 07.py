@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import os
 import collections
 
 class Dir:

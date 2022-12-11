@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-import os
-
 def parse(line):
     direction, count = line.split()
     if direction == 'L':

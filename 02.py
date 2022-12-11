@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import os
 import string
 
 # A -> X -> rock -> 1

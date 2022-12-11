@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-import os
-
 def solve(marker_len):
     for i in range(len(buf) - marker_len):
         s = set()

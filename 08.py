@@ -1,12 +1,4 @@
 #!/usr/bin/python3
-import os
-
-lines = open("08.txt").readlines()
-grid = [[int(x) for x in line.strip('\n')] for line in lines]
-
-# grid is a square
-glen = len(grid)
-
 def is_visible(row, col, val):
     if row == 0 or col == 0 or row == glen - 1 or col == glen - 1: # edges
         return int(True)
@@ -55,5 +47,11 @@ def solve():
 
     print(vis_count) # 1870
     print(max_vis)   # 517440
+
+lines = open("08.txt").readlines()
+grid = [[int(x) for x in line.strip('\n')] for line in lines]
+
+# grid is a square
+glen = len(grid)
 
 solve()

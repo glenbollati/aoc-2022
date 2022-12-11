@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-import os
-
 def p1(lines):
     acc = 0
     for l in limits:

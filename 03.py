@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-import os
-
 def prio(ch):
     if ord(ch) > 96:
         return ord(ch) - 96
