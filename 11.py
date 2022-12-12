@@ -11,67 +11,33 @@ class Monkey:
         self.monkey_false = None
         self.inspections = 0
 
-    def run_turn(self):
+    def run_turn(self, p2):
         for item in self.items:
             self.inspections += 1
             old_item = item
             if self.op_type == '*':
-                if self.op_val == "old":
-                    item = (item * item) // 3
-                else:
-                    item = (item * int(self.op_val)) // 3
-            elif self.op_type == '+':
-                if self.op_val == "old":
-                    item = (item + item) // 3
-                else:
-                    item = (item + int(self.op_val)) // 3
-            else:
-                panic()
+                item = (item * item) if self.op_val == "old" else (item * int(self.op_val))
+                if not p2:
+                    item //= 3
+            else: # elif self.op_type == '+':
+                item = (item + item) if self.op_val == "old" else (item + int(self.op_val))
+                if not p2:
+                    item //= 3
 
-            if item % self.test == 0:
-                monkeys[self.monkey_true].items.append(item)
-                self.items.remove(old_item)
-            else:
-                monkeys[self.monkey_false].items.append(item)
-                self.items.remove(old_item)
+            m = self.monkey_true if item % self.test == 0 else self.monkey_false
+            monkeys[m].items.append(item)
+            self.items.remove(old_item)
 
-    def run_turn_v2(self):
-        for item in self.items:
-            self.inspections += 1
-            old_item = item
-            if self.op_type == '*':
-                if self.op_val == "old":
-                    item = (item * item)
-                else:
-                    item = (item * int(self.op_val))
-            elif self.op_type == '+':
-                if self.op_val == "old":
-                    item = (item + item)
-                else:
-                    item = (item + int(self.op_val))
-            else:
-                panic()
-
-            if item % self.test == 0:
-                monkeys[self.monkey_true].items.append(item)
-                self.items.remove(old_item)
-            else:
-                monkeys[self.monkey_false].items.append(item)
-                self.items.remove(old_item)
-
-def run_round(v2):
+def run_round(p2):
     for m in monkeys:
         if len(m.items) == 0:
             continue
         while (len(m.items) > 0):
-            if v2:
-                m.run_turn_v2()
-            else:
-                m.run_turn()
+            m.run_turn(p2)
 
 monkey = None
 
-lines = open("11.txt").readlines()
+lines = open("11.test").readlines()
 for line in lines:
     if line.isspace():
         if monkey is not None:
@@ -122,5 +88,5 @@ for i in range(len(monkeys)):
 
 inspections.sort(reverse = True)
 
-print(inspections[0] * inspections[1]) # 55216
+print(inspections[0] * inspections[1])
 # 14398080063 too high
