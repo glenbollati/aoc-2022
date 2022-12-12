@@ -19,7 +19,7 @@ class Monkey:
                 item = (item * item) if self.op_val == "old" else (item * int(self.op_val))
                 if not p2:
                     item //= 3
-            else: # elif self.op_type == '+':
+            else: # '+':
                 item = (item + item) if self.op_val == "old" else (item + int(self.op_val))
                 if not p2:
                     item //= 3
